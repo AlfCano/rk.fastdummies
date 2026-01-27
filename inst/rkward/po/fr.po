@@ -1,0 +1,78 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: rk.fastdummies 0.0.1\n"
+"Report-Msgid-Bugs-To: alfonso.cano@correo.buap.mx\n"
+"POT-Creation-Date: 2023-10-27 12:00+0000\n"
+"PO-Revision-Date: 2023-10-27 12:00+0000\n"
+"Last-Translator: Alfonso Cano <alfonso.cano@correo.buap.mx>\n"
+"Language-Team: French <rkward-devel@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Create Dummy Variables"
+msgstr "Créer des variables indicatrices (Dummies)"
+
+msgid "An RKWard plugin to create dummy variables (one-hot encoding) from survey or dataframe objects using the 'fastDummies' package."
+msgstr "Un plugin RKWard pour créer des variables indicatrices (encodage one-hot) à partir d'objets d'enquête ou de data frames en utilisant le package 'fastDummies'."
+
+msgid "Create Dummy Variables (fastDummies)"
+msgstr "Créer des variables indicatrices (fastDummies)"
+
+msgid "Input Data (Data Frame or Survey Object)"
+msgstr "Données d'entrée (Data Frame ou objet d'enquête)"
+
+msgid "Columns to expand (Leave empty to expand all factor/char columns)"
+msgstr "Colonnes à développer (laisser vide pour les facteurs/caractères)"
+
+msgid "Remove first dummy variable (Avoids collinearity)"
+msgstr "Supprimer la première variable indicatrice (évite la colinéarité)"
+
+msgid "Remove most frequent dummy variable"
+msgstr "Supprimer la variable indicatrice la plus fréquente"
+
+msgid "Ignore NA rank (Preserve NAs)"
+msgstr "Ignorer le rang NA (préserver les valeurs manquantes)"
+
+msgid "Remove original columns after creating dummies"
+msgstr "Supprimer les colonnes d'origine après la création"
+
+msgid "Save Results to R Object"
+msgstr "Enregistrer les résultats dans un objet R"
+
+msgid "Dummy Creation Rules"
+msgstr "Règles de création"
+
+msgid "Data Cleaning"
+msgstr "Nettoyage des données"
+
+msgid "Variables"
+msgstr "Variables"
+
+msgid "Settings"
+msgstr "Paramètres"
+
+msgid "Output"
+msgstr "Sortie"
+
+msgid "Data Wrangling"
+msgstr "Manipulation de données"
+
+# --- Strings generated in JS Printout ---
+
+msgid "Dummy Variables Created"
+msgstr "Variables indicatrices créées"
+
+msgid "Input Object"
+msgstr "Objet d'entrée"
+
+msgid "Saved to"
+msgstr "Enregistré sous"
+
+msgid "Remove first dummy"
+msgstr "Supprimer la première"
+
+msgid "Remove original columns"
+msgstr "Supprimer les colonnes d'origine"

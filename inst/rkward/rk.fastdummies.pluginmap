@@ -1,0 +1,77 @@
+<!DOCTYPE
+	rkpluginmap
+>
+<document
+	base_prefix=""
+	namespace="CreateDummyVariables"
+	id="CreateDummyVariables_rkward"
+	po_id="CreateDummyVariables_rkward"
+	priority="medium"
+>
+	<!--
+		this code was generated using the rkwarddev package.
+	perhaps don't make changes here, but in the rkwarddev script instead!
+	-->
+	<!--
+		<dependencies>
+		</dependencies>
+	-->
+	<about
+		name="rk.fastdummies"
+		shortinfo="An RKWard plugin to create dummy variables (one-hot encoding) from survey or dataframe objects using the 'fastDummies' package."
+		longinfo="An RKWard plugin to create dummy variables (one-hot encoding) from survey or dataframe objects using the 'fastDummies' package."
+		version="0.0.1"
+		releasedate="2026-01-26"
+		url="https://github.com/AlfCano/rk.fastdummies"
+		license="GPL (&gt;= 3)"
+	>
+		<author
+			given="Alfonso"
+			family="Cano"
+			email="alfonso.cano@correo.buap.mx"
+			role="aut, cre"
+		/>
+	</about>
+	<require
+		map="rkward::menu"
+	/>
+	<require
+		map="rkward::embedded"
+	/>
+	<components>
+		<component
+			id="cmp_CretDmmyVrblsCrtDmmyVrbls"
+			label="Create Dummy Variables"
+			type="standard"
+			file="plugins/CreateDummyVariables.xml"
+		>
+		</component>
+	</components>
+	<hierarchy>
+		<menu
+			id="data"
+			label="Data"
+		>
+			<menu
+				id="DataWrangling"
+				label="Data Wrangling"
+			>
+				<entry
+					component="cmp_CretDmmyVrblsCrtDmmyVrbls"
+				/>
+			</menu>
+		</menu>
+	</hierarchy>
+	<!--
+		<context
+			id="x11"
+		>
+		</context>
+	-->
+	<!--
+		<context
+			id="import"
+		>
+		</context>
+	-->
+</document>

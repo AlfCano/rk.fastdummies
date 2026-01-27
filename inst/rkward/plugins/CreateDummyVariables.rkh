@@ -1,0 +1,48 @@
+<!DOCTYPE rkhelp >
+<document>
+	<!--
+		this code was generated using the rkwarddev package.
+	perhaps don't make changes here, but in the rkwarddev script instead!
+	-->
+	<summary>
+	</summary>
+	<usage>
+	</usage>
+	<!--
+		<section id="sct_EDITORDE" title="EDIT OR DELETE ME">
+			EDIT OR DELETE ME
+		</section>
+	-->
+	<settings>
+		<caption id="tab_Variabls" />
+		<setting id="inp_data">
+		</setting>
+		<setting id="inp_cols">
+		</setting>
+		<caption id="tab_Settings" />
+		<caption id="frm_DmmyCrtR" />
+		<setting id="remove_first_dummy">
+		</setting>
+		<setting id="remove_most_frequent_dummy">
+		</setting>
+		<setting id="ignore_na">
+		</setting>
+		<caption id="frm_DatClnng" />
+		<setting id="remove_selected_columns">
+		</setting>
+		<caption id="tab_Output" />
+		<setting id="save_dummy_obj">
+		</setting>
+	</settings>
+	<!--
+		<related>
+			<ul>
+				<li>
+					<link href="rkward://rhelp/..." />
+				</li>
+			</ul>
+		</related>
+	-->
+	<technical>
+	</technical>
+</document>

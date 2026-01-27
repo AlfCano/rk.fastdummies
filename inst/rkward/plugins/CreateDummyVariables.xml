@@ -1,0 +1,54 @@
+<!DOCTYPE rkplugin >
+<document>
+	<!--
+		this code was generated using the rkwarddev package.
+	perhaps don't make changes here, but in the rkwarddev script instead!
+	-->
+	<code file="CreateDummyVariables.js" />
+	<help file="CreateDummyVariables.rkh" />
+	<!--
+		<dependencies>
+		</dependencies>
+	-->
+	<logic>
+		<!--
+			<convert id="!edit!" sources="!edit!" mode="equals" standard="!edit!" />
+		-->
+		<!--
+			<connect governor="!edit!.state" client="!edit!.enabled" />
+		-->
+	</logic>
+	<dialog label="Create Dummy Variables (fastDummies)">
+		<row id="row_vVVIDDFSOC">
+			<varselector id="v_selector" />
+			<column id="clm_tVVIDDFSOC">
+				<tabbook>
+					<tab label="Variables" id="tab_Variabls">
+						<column id="clm_vrIDDFSOCL">
+							<varslot id="inp_data" label="Input Data (Data Frame or Survey Object)" source="v_selector" classes="data.frame survey.design tbl_svy svyrep.design" required="true" />
+							<varslot id="inp_cols" label="Columns to expand (Leave empty to expand all factor/char columns)" source="v_selector" multi="true" />
+						</column>
+					</tab>
+					<tab label="Settings" id="tab_Settings">
+						<column id="clm_fDCRDCRRAT">
+							<frame label="Dummy Creation Rules" id="frm_DmmyCrtR">
+								<checkbox id="remove_first_dummy" label="Remove first dummy variable (Avoids collinearity)" value="TRUE" />
+								<checkbox id="remove_most_frequent_dummy" label="Remove most frequent dummy variable" value="TRUE" />
+								<checkbox id="ignore_na" label="Ignore NA values (Do not create dummy for NA)" value="TRUE" />
+							</frame>
+							<frame label="Data Cleaning" id="frm_DatClnng">
+								<checkbox id="remove_selected_columns" label="Remove original columns after creating dummies" value="TRUE" />
+							</frame>
+						</column>
+					</tab>
+					<tab label="Output" id="tab_Output">
+						<column id="clm_svbjSRROPP">
+							<saveobject label="Save Results to R Object" checkable="true" checked="true" initial="dummy_results" id="save_dummy_obj" />
+							<preview label="Preview" id="prv_Preview" mode="output" />
+						</column>
+					</tab>
+				</tabbook>
+			</column>
+		</row>
+	</dialog>
+</document>

@@ -1,0 +1,78 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: rk.fastdummies 0.0.1\n"
+"Report-Msgid-Bugs-To: alfonso.cano@correo.buap.mx\n"
+"POT-Creation-Date: 2023-10-27 12:00+0000\n"
+"PO-Revision-Date: 2023-10-27 12:00+0000\n"
+"Last-Translator: Alfonso Cano <alfonso.cano@correo.buap.mx>\n"
+"Language-Team: German <rkward-devel@kde.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Create Dummy Variables"
+msgstr "Dummy-Variablen erstellen"
+
+msgid "An RKWard plugin to create dummy variables (one-hot encoding) from survey or dataframe objects using the 'fastDummies' package."
+msgstr "Ein RKWard-Plugin zum Erstellen von Dummy-Variablen (One-Hot-Encoding) aus Survey- oder Dataframe-Objekten unter Verwendung des 'fastDummies'-Pakets."
+
+msgid "Create Dummy Variables (fastDummies)"
+msgstr "Dummy-Variablen erstellen (fastDummies)"
+
+msgid "Input Data (Data Frame or Survey Object)"
+msgstr "Eingabedaten (Data Frame oder Survey-Objekt)"
+
+msgid "Columns to expand (Leave empty to expand all factor/char columns)"
+msgstr "Zu erweiternde Spalten (leer lassen für alle Faktoren/Zeichen)"
+
+msgid "Remove first dummy variable (Avoids collinearity)"
+msgstr "Erste Dummy-Variable entfernen (vermeidet Kollinearität)"
+
+msgid "Remove most frequent dummy variable"
+msgstr "Häufigste Dummy-Variable entfernen"
+
+msgid "Ignore NA rank (Preserve NAs)"
+msgstr "NA-Rang ignorieren (NAs beibehalten)"
+
+msgid "Remove original columns after creating dummies"
+msgstr "Ursprüngliche Spalten nach Erstellung entfernen"
+
+msgid "Save Results to R Object"
+msgstr "Ergebnisse in R-Objekt speichern"
+
+msgid "Dummy Creation Rules"
+msgstr "Erstellungsregeln"
+
+msgid "Data Cleaning"
+msgstr "Datenbereinigung"
+
+msgid "Variables"
+msgstr "Variablen"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Output"
+msgstr "Ausgabe"
+
+msgid "Data Wrangling"
+msgstr "Datenaufbereitung"
+
+# --- Strings generated in JS Printout ---
+
+msgid "Dummy Variables Created"
+msgstr "Dummy-Variablen erstellt"
+
+msgid "Input Object"
+msgstr "Eingabeobjekt"
+
+msgid "Saved to"
+msgstr "Gespeichert in"
+
+msgid "Remove first dummy"
+msgstr "Erste Variable entfernt"
+
+msgid "Remove original columns"
+msgstr "Urspr. Spalten entfernt"

@@ -1,0 +1,19 @@
+Package: rk.fastdummies
+Type: Package
+Title: An RKWard plugin to create dummy variables (one-hot encoding)
+        from survey or dataframe objects using the 'fastDummies'
+        package.
+Version: 0.0.1
+Date: 2026-01-26
+Author: Alfonso Cano
+Maintainer: Alfonso Cano <alfonso.cano@correo.buap.mx>
+Enhances: rkward
+Description: An RKWard plugin to create dummy variables (one-hot
+        encoding) from survey or dataframe objects using the
+        'fastDummies' package.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyLoad: yes
+URL: https://github.com/AlfCano/rk.fastdummies
+Authors@R: person(given="Alfonso", family="Cano",
+        email="alfonso.cano@correo.buap.mx", role=c("aut", "cre"))
