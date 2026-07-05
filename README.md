@@ -57,7 +57,7 @@ This plugin is not yet on CRAN. To install it, use the `remotes` or `devtools` p
     # install.packages("devtools")
     
     local({
-      require(devtools)
+      require(remotes)
       install_github("AlfCano/rk.fastdummies", force = TRUE)
     })
     ```
