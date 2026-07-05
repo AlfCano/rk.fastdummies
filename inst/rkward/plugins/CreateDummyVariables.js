@@ -45,38 +45,18 @@ function preview(){
       var safe_cols = raw_cols.map(function(c) { return "\'" + c + "\'"; });
       var cols_r_code = (safe_cols.length > 0) ? "c(" + safe_cols.join(", ") + ")" : "NULL";
 
-      var drop_levels = getValue("drop_unused_levels") == "TRUE";
-      var rem_first   = getValue("remove_first_dummy") == "TRUE" ? "TRUE" : "FALSE";
-      var rem_freq    = getValue("remove_most_frequent_dummy") == "TRUE" ? "TRUE" : "FALSE";
-      var ign_na      = getValue("ignore_na") == "TRUE" ? "TRUE" : "FALSE";
-      var rem_orig    = getValue("remove_selected_columns") == "TRUE" ? "TRUE" : "FALSE";
-      
-      // Escape single quotes if user typed them in the prefix to safely insert into R single quotes
-      var custom_prefix = getValue("custom_prefix");
-      if (custom_prefix) {
-          custom_prefix = custom_prefix.replace(/\'/g, "\\\'");
-      } else {
-          custom_prefix = "";
-      }
+      var rem_first = getValue("remove_first_dummy") == "TRUE" ? "TRUE" : "FALSE";
+      var rem_freq  = getValue("remove_most_frequent_dummy") == "TRUE" ? "TRUE" : "FALSE";
+      var ign_na    = getValue("ignore_na") == "TRUE" ? "TRUE" : "FALSE";
+      var rem_orig  = getValue("remove_selected_columns") == "TRUE" ? "TRUE" : "FALSE";
 
       
       // PREVIEW MODE
       echo("require(fastDummies)\n");
       echo("local_obj <- " + data_obj + "\n");
       echo("is_survey <- 'variables' %in% names(local_obj)\n");
-      echo("working_df <- if(is_survey) head(local_obj$variables, 50) else head(local_obj, 50)\n");
-      
-      if (drop_levels) {
-          echo("working_df <- droplevels(working_df)\n");
-      }
-      
-      echo("orig_cols <- names(working_df)\n");
-      echo("preview_data <- fastDummies::dummy_cols(.data = working_df, select_columns = " + cols_r_code + ", remove_first_dummy = " + rem_first + ", remove_most_frequent_dummy = " + rem_freq + ", ignore_na = " + ign_na + ", remove_selected_columns = " + rem_orig + ")\n");
-      
-      if (custom_prefix !== "") {
-          echo("new_cols <- setdiff(names(preview_data), orig_cols)\n");
-          echo("names(preview_data)[names(preview_data) %in% new_cols] <- paste0('" + custom_prefix + "', new_cols)\n");
-      }
+      echo("prev_df <- if(is_survey) head(local_obj$variables, 50) else head(local_obj, 50)\n");
+      echo("preview_data <- fastDummies::dummy_cols(.data = prev_df, select_columns = " + cols_r_code + ", remove_first_dummy = " + rem_first + ", remove_most_frequent_dummy = " + rem_freq + ", ignore_na = " + ign_na + ", remove_selected_columns = " + rem_orig + ")\n");
       
     
 }
@@ -138,19 +118,10 @@ function calculate(is_preview){
       var safe_cols = raw_cols.map(function(c) { return "\'" + c + "\'"; });
       var cols_r_code = (safe_cols.length > 0) ? "c(" + safe_cols.join(", ") + ")" : "NULL";
 
-      var drop_levels = getValue("drop_unused_levels") == "TRUE";
-      var rem_first   = getValue("remove_first_dummy") == "TRUE" ? "TRUE" : "FALSE";
-      var rem_freq    = getValue("remove_most_frequent_dummy") == "TRUE" ? "TRUE" : "FALSE";
-      var ign_na      = getValue("ignore_na") == "TRUE" ? "TRUE" : "FALSE";
-      var rem_orig    = getValue("remove_selected_columns") == "TRUE" ? "TRUE" : "FALSE";
-      
-      // Escape single quotes if user typed them in the prefix to safely insert into R single quotes
-      var custom_prefix = getValue("custom_prefix");
-      if (custom_prefix) {
-          custom_prefix = custom_prefix.replace(/\'/g, "\\\'");
-      } else {
-          custom_prefix = "";
-      }
+      var rem_first = getValue("remove_first_dummy") == "TRUE" ? "TRUE" : "FALSE";
+      var rem_freq  = getValue("remove_most_frequent_dummy") == "TRUE" ? "TRUE" : "FALSE";
+      var ign_na    = getValue("ignore_na") == "TRUE" ? "TRUE" : "FALSE";
+      var rem_orig  = getValue("remove_selected_columns") == "TRUE" ? "TRUE" : "FALSE";
 
       
       // MAIN MODE
@@ -159,17 +130,7 @@ function calculate(is_preview){
       echo("is_survey <- 'variables' %in% names(local_obj)\n");
       echo("working_df <- if(is_survey) local_obj$variables else local_obj\n");
 
-      if (drop_levels) {
-          echo("working_df <- droplevels(working_df)\n");
-      }
-      
-      echo("orig_cols <- names(working_df)\n");
       echo("working_df <- fastDummies::dummy_cols(.data = working_df, select_columns = " + cols_r_code + ", remove_first_dummy = " + rem_first + ", remove_most_frequent_dummy = " + rem_freq + ", ignore_na = " + ign_na + ", remove_selected_columns = " + rem_orig + ")\n");
-
-      if (custom_prefix !== "") {
-          echo("new_cols <- setdiff(names(working_df), orig_cols)\n");
-          echo("names(working_df)[names(working_df) %in% new_cols] <- paste0('" + custom_prefix + "', new_cols)\n");
-      }
 
       echo("if (is_survey) {\n");
       echo("  dummy_results <- local_obj\n");
@@ -193,20 +154,10 @@ function printout(is_preview){
 	}
     if(getValue("save_dummy_obj.active")) {
       var save_name = getValue("save_dummy_obj").replace(/"/g, "\\\"");
-      
-      var custom_prefix = getValue("custom_prefix");
-      if (custom_prefix) {
-          custom_prefix = custom_prefix.replace(/"/g, "\\\"");
-      } else {
-          custom_prefix = "";
-      }
-      
       echo("rk.header(\"Dummy Variables Created: " + save_name + "\", level=3, parameters=list(\n");
       echo("  \"Input Object\" = \"" + getValue("inp_data") + "\",\n");
-      echo("  \"Drop unused levels\" = \"" + getValue("drop_unused_levels") + "\",\n");
       echo("  \"Remove first dummy\" = \"" + getValue("remove_first_dummy") + "\",\n");
-      echo("  \"Remove original columns\" = \"" + getValue("remove_selected_columns") + "\",\n");
-      echo("  \"Custom Prefix\" = \"" + custom_prefix + "\"\n");
+      echo("  \"Remove original columns\" = \"" + getValue("remove_selected_columns") + "\"\n");
       echo("))\n");
     }
   

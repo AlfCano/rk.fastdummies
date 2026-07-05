@@ -31,18 +31,14 @@
 						</column>
 					</tab>
 					<tab label="Settings" id="tab_Settings">
-						<column id="clm_fPPDTRUEDC">
-							<frame label="Pre-processing" id="frm_Prprcssn">
-								<checkbox id="drop_unused_levels" label="Drop unused factor levels before creating dummies" value="TRUE" />
-							</frame>
+						<column id="clm_fDCRDCRRAT">
 							<frame label="Dummy Creation Rules" id="frm_DmmyCrtR">
 								<checkbox id="remove_first_dummy" label="Remove first dummy variable (Avoids collinearity)" value="TRUE" />
 								<checkbox id="remove_most_frequent_dummy" label="Remove most frequent dummy variable" value="TRUE" />
 								<checkbox id="ignore_na" label="Ignore NA values (Do not create dummy for NA)" value="TRUE" />
 							</frame>
-							<frame label="Data Cleaning &amp; Naming" id="frm_DtClnngN">
+							<frame label="Data Cleaning" id="frm_DatClnng">
 								<checkbox id="remove_selected_columns" label="Remove original columns after creating dummies" value="TRUE" />
-								<input label="Custom string prefix for new dummy columns (Optional)" id="custom_prefix" />
 							</frame>
 							<stretch />
 						</column>

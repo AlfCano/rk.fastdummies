@@ -20,9 +20,6 @@
 		<setting id="inp_cols">
 		</setting>
 		<caption id="tab_Settings" />
-		<caption id="frm_Prprcssn" />
-		<setting id="drop_unused_levels">
-		</setting>
 		<caption id="frm_DmmyCrtR" />
 		<setting id="remove_first_dummy">
 		</setting>
@@ -30,10 +27,8 @@
 		</setting>
 		<setting id="ignore_na">
 		</setting>
-		<caption id="frm_DtClnngN" />
+		<caption id="frm_DatClnng" />
 		<setting id="remove_selected_columns">
-		</setting>
-		<setting id="custom_prefix">
 		</setting>
 		<caption id="tab_Output" />
 		<setting id="save_dummy_obj">

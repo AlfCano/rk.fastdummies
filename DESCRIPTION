@@ -2,16 +2,15 @@ Package: rk.fastdummies
 Type: Package
 Title: An RKWard plugin to create dummy variables (one-hot encoding)
         from survey or dataframe objects using the 'fastDummies'
-        package. Supports unused level dropping and custom prefixing.
-Version: 0.0.4
+        package.
+Version: 0.0.2
 Date: 2026-07-05
 Author: Alfonso Cano
 Maintainer: Alfonso Cano <alfonso.cano@correo.buap.mx>
 Enhances: rkward
 Description: An RKWard plugin to create dummy variables (one-hot
         encoding) from survey or dataframe objects using the
-        'fastDummies' package. Supports unused level dropping and
-        custom prefixing.
+        'fastDummies' package.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyLoad: yes

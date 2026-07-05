@@ -18,9 +18,9 @@
 	-->
 	<about
 		name="rk.fastdummies"
-		shortinfo="An RKWard plugin to create dummy variables (one-hot encoding) from survey or dataframe objects using the 'fastDummies' package. Supports unused level dropping and custom prefixing."
-		longinfo="An RKWard plugin to create dummy variables (one-hot encoding) from survey or dataframe objects using the 'fastDummies' package. Supports unused level dropping and custom prefixing."
-		version="0.0.4"
+		shortinfo="An RKWard plugin to create dummy variables (one-hot encoding) from survey or dataframe objects using the 'fastDummies' package."
+		longinfo="An RKWard plugin to create dummy variables (one-hot encoding) from survey or dataframe objects using the 'fastDummies' package."
+		version="0.0.2"
 		releasedate="2026-07-05"
 		url="https://github.com/AlfCano/rk.fastdummies"
 		license="GPL (&gt;= 3)"
