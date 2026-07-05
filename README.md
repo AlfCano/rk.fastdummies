@@ -1,11 +1,16 @@
 # rk.fastdummies: Fast One-Hot Encoding for RKWard
 
-![Version](https://img.shields.io/badge/Version-0.0.1-blue.svg)
+![Version](https://img.shields.io/badge/Version-0.0.2-blue.svg)
 ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 ![RKWard](https://img.shields.io/badge/Platform-RKWard-green)
 [![R Linter](https://github.com/AlfCano/rk.fastdummies/actions/workflows/lintr.yml/badge.svg)](https://github.com/AlfCano/rk.fastdummies/actions/workflows/lintr.yml)
 
 **rk.fastdummies** extends RKWard's data wrangling capabilities by providing a graphical interface for the `{fastDummies}` package. It allows users to quickly create dummy variables (one-hot encoding) from character or factor variables. Uniquely, this plugin supports both standard `data.frame` objects and complex survey designs (`svydesign`), ensuring that your weighted data structure remains intact during transformation.
+
+### 🚀 What's New in Version 0.0.2
+1.  **Added support for survey objects:** Now one plug-in supports regular data frames and survey design objects.
+2.  **Unused Level Dropping:** Added an option to run `droplevels()` on your data before processing, preventing the creation of empty dummy columns for unused factor levels.
+3.  **Custom Prefixing:** Added an input field to prepend a custom string to all generated dummy variable names, allowing for better organization in large datasets.
 
 ## 🚀 What's New in Version 0.0.1
 
@@ -66,7 +71,7 @@ Once installed, the tool is organized under the **Data** menu:
 
 1.  **Select Input:** Choose a Data Frame or Survey Design.
 2.  **Select Columns:** Pick specific variables or leave empty for all.
-3.  **Configure:** Set rules for reference categories (remove first/freq) and NA handling.
+3.  * **Configure:** Set rules for reference categories, choose to drop unused factor levels, and define custom name prefixes.
 4.  **Save:** The result is saved to a new R object (default: `dummy_results`).
 
 ## 🛠️ Dependencies
