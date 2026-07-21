@@ -12,16 +12,22 @@
 		this code was generated using the rkwarddev package.
 	perhaps don't make changes here, but in the rkwarddev script instead!
 	-->
-	<!--
-		<dependencies>
-		</dependencies>
-	-->
+	<dependencies
+		R_min_version="3.5.0"
+	>
+		<package
+			name="fastDummies"
+		/>
+		<package
+			name="janitor"
+		/>
+	</dependencies>
 	<about
 		name="rk.fastdummies"
-		shortinfo="An RKWard plugin to create dummy variables (one-hot encoding) from survey or dataframe objects using the 'fastDummies' package."
-		longinfo="An RKWard plugin to create dummy variables (one-hot encoding) from survey or dataframe objects using the 'fastDummies' package."
-		version="0.0.2"
-		releasedate="2026-07-05"
+		shortinfo="An RKWard plugin to create dummy variables (one-hot encoding) from survey or dataframe objects using the 'fastDummies' package. Features integrated label preservation and janitor cleaning."
+		longinfo="An RKWard plugin to create dummy variables (one-hot encoding) from survey or dataframe objects using the 'fastDummies' package. Features integrated label preservation and janitor cleaning."
+		version="0.0.3"
+		releasedate="2026-07-21"
 		url="https://github.com/AlfCano/rk.fastdummies"
 		license="GPL (&gt;= 3)"
 	>

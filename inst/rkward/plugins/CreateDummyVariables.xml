@@ -37,8 +37,9 @@
 								<checkbox id="remove_most_frequent_dummy" label="Remove most frequent dummy variable" value="TRUE" />
 								<checkbox id="ignore_na" label="Ignore NA values (Do not create dummy for NA)" value="TRUE" />
 							</frame>
-							<frame label="Data Cleaning" id="frm_DatClnng">
+							<frame label="Data Cleaning &amp; Naming" id="frm_DtClnngN">
 								<checkbox id="remove_selected_columns" label="Remove original columns after creating dummies" value="TRUE" />
+								<checkbox id="chk_janitor" label="Clean all column names with janitor (snake_case)" value="TRUE" checked="true" />
 							</frame>
 							<stretch />
 						</column>

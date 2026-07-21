@@ -2,15 +2,19 @@ Package: rk.fastdummies
 Type: Package
 Title: An RKWard plugin to create dummy variables (one-hot encoding)
         from survey or dataframe objects using the 'fastDummies'
-        package.
-Version: 0.0.2
-Date: 2026-07-05
+        package. Features integrated label preservation and janitor
+        cleaning.
+Version: 0.0.3
+Date: 2026-07-21
 Author: Alfonso Cano
 Maintainer: Alfonso Cano <alfonso.cano@correo.buap.mx>
+Depends: R (>= 3.5.0)
+Suggests: fastDummies, janitor
 Enhances: rkward
 Description: An RKWard plugin to create dummy variables (one-hot
         encoding) from survey or dataframe objects using the
-        'fastDummies' package.
+        'fastDummies' package. Features integrated label preservation
+        and janitor cleaning.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyLoad: yes

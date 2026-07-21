@@ -1,11 +1,22 @@
 # rk.fastdummies: Fast One-Hot Encoding for RKWard
 
-![Version](https://img.shields.io/badge/Version-0.0.2-blue.svg)
+![Version](https://img.shields.io/badge/Version-0.0.3-blue.svg)
 ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 ![RKWard](https://img.shields.io/badge/Platform-RKWard-green)
 [![R Linter](https://github.com/AlfCano/rk.fastdummies/actions/workflows/lintr.yml/badge.svg)](https://github.com/AlfCano/rk.fastdummies/actions/workflows/lintr.yml)
 
 **rk.fastdummies** extends RKWard's data wrangling capabilities by providing a graphical interface for the `{fastDummies}` package. It allows users to quickly create dummy variables (one-hot encoding) from character or factor variables. Uniquely, this plugin supports both standard `data.frame` objects and complex survey designs (`svydesign`), ensuring that your weighted data structure remains intact during transformation.
+
+## 🚀 What's New in Version 0.0.3
+
+This update transforms the plugin from a simple dummy-creator into an intelligent data-preparation tool, perfectly bridging the gap between statistical modeling and visual storytelling:
+
+### ✨ Enhancements
+* **Smart Janitor Integration:** Added a new option to automatically clean all resulting column names using `janitor::clean_names()`. This ensures your dataframe is completely `snake_case` and ready for strict modeling formulas.
+* **Automated Label Preservation:** Before the `janitor` cleaning algorithm runs, the plugin now dynamically detects the newly created dummy columns and saves their raw, human-readable factor levels (e.g., `Income_More than 10,000`) as native RKWard metadata labels (`.rk.meta`). Your columns get clean names for coding, but retain perfect descriptive labels for `ggplot2` and `gtsummary`!
+
+### 🐛 Bug Fixes
+* **Safe Quote Escaping:** Fixed a critical syntax bug in the R Output printing block. The JavaScript engine now safely escapes double quotes `"` when passing complex object targets (like `survey.design[["variables"]]`), preventing the R console from crashing during execution.
 
 ### 🚀 What's New in Version 0.0.2
 1.  **Added support for survey objects:** Now one plug-in supports regular data frames and survey design objects.

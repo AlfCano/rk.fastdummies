@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: rk.fastdummies 0.0.2\n"
+"Project-Id-Version: rk.fastdummies 0.0.3\n"
 "Report-Msgid-Bugs-To: alfonso.cano@correo.buap.mx\n"
 "POT-Creation-Date: 2023-10-27 12:00+0000\n"
 "PO-Revision-Date: 2023-10-27 12:00+0000\n"
@@ -82,3 +82,12 @@ msgstr "Supprimer les niveaux de facteur inutilisés avant de créer des variabl
 
 msgid "Custom string prefix for new dummy columns (Optional)"
 msgstr "Préfixe de chaîne personnalisé pour les nouvelles colonnes factices (Optionnel)"
+
+msgid "Clean all column names with janitor (snake_case)"
+msgstr "Nettoyer tous les noms de colonnes avec janitor (snake_case)"
+
+msgid "Data Cleaning & Naming"
+msgstr "Nettoyage et Nommage des Données"
+
+msgid "Clean names with janitor"
+msgstr "Nettoyer les noms avec janitor"

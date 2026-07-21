@@ -17,26 +17,6 @@ function preview(){
             return item;
         });
     }
-
-    function genLabelRestoreCode(source_obj, target_obj) {
-        var code = "";
-        code += "## Restore variable labels\n";
-        code += "source_vars <- if('variables' %in% names(" + source_obj + ")) " + source_obj + "$variables else " + source_obj + "\n";
-        code += "is_survey_tgt <- 'variables' %in% names(" + target_obj + ")\n";
-        code += "target_names <- if(is_survey_tgt) names(" + target_obj + "$variables) else names(" + target_obj + ")\n";
-        code += "for(col_name in target_names) {\n";
-        code += "  try({\n";
-        code += "    if(col_name %in% names(source_vars)) {\n";
-        code += "      if(is_survey_tgt) {\n";
-        code += "        attr(" + target_obj + "$variables[[col_name]], '.rk.meta') <- attr(source_vars[[col_name]], '.rk.meta')\n";
-        code += "      } else {\n";
-        code += "        attr(" + target_obj + "[[col_name]], '.rk.meta') <- attr(source_vars[[col_name]], '.rk.meta')\n";
-        code += "      }\n";
-        code += "    }\n";
-        code += "  }, silent=TRUE)\n";
-        code += "}\n";
-        return code;
-    }
   
       var data_obj = getValue("inp_data");
       if (!data_obj) return;
@@ -49,14 +29,19 @@ function preview(){
       var rem_freq  = getValue("remove_most_frequent_dummy") == "TRUE" ? "TRUE" : "FALSE";
       var ign_na    = getValue("ignore_na") == "TRUE" ? "TRUE" : "FALSE";
       var rem_orig  = getValue("remove_selected_columns") == "TRUE" ? "TRUE" : "FALSE";
+      var do_janit  = getValue("chk_janitor") == "TRUE";
+
+      echo("require(fastDummies)\n");
+      if (do_janit) echo("require(janitor)\n");
+      echo("\n");
 
       
       // PREVIEW MODE
-      echo("require(fastDummies)\n");
       echo("local_obj <- " + data_obj + "\n");
       echo("is_survey <- 'variables' %in% names(local_obj)\n");
       echo("prev_df <- if(is_survey) head(local_obj$variables, 50) else head(local_obj, 50)\n");
       echo("preview_data <- fastDummies::dummy_cols(.data = prev_df, select_columns = " + cols_r_code + ", remove_first_dummy = " + rem_first + ", remove_most_frequent_dummy = " + rem_freq + ", ignore_na = " + ign_na + ", remove_selected_columns = " + rem_orig + ")\n");
+      if (do_janit) echo("preview_data <- janitor::clean_names(preview_data)\n");
       
     
 }
@@ -90,26 +75,6 @@ function calculate(is_preview){
             return item;
         });
     }
-
-    function genLabelRestoreCode(source_obj, target_obj) {
-        var code = "";
-        code += "## Restore variable labels\n";
-        code += "source_vars <- if('variables' %in% names(" + source_obj + ")) " + source_obj + "$variables else " + source_obj + "\n";
-        code += "is_survey_tgt <- 'variables' %in% names(" + target_obj + ")\n";
-        code += "target_names <- if(is_survey_tgt) names(" + target_obj + "$variables) else names(" + target_obj + ")\n";
-        code += "for(col_name in target_names) {\n";
-        code += "  try({\n";
-        code += "    if(col_name %in% names(source_vars)) {\n";
-        code += "      if(is_survey_tgt) {\n";
-        code += "        attr(" + target_obj + "$variables[[col_name]], '.rk.meta') <- attr(source_vars[[col_name]], '.rk.meta')\n";
-        code += "      } else {\n";
-        code += "        attr(" + target_obj + "[[col_name]], '.rk.meta') <- attr(source_vars[[col_name]], '.rk.meta')\n";
-        code += "      }\n";
-        code += "    }\n";
-        code += "  }, silent=TRUE)\n";
-        code += "}\n";
-        return code;
-    }
   
       var data_obj = getValue("inp_data");
       if (!data_obj) return;
@@ -122,15 +87,43 @@ function calculate(is_preview){
       var rem_freq  = getValue("remove_most_frequent_dummy") == "TRUE" ? "TRUE" : "FALSE";
       var ign_na    = getValue("ignore_na") == "TRUE" ? "TRUE" : "FALSE";
       var rem_orig  = getValue("remove_selected_columns") == "TRUE" ? "TRUE" : "FALSE";
+      var do_janit  = getValue("chk_janitor") == "TRUE";
+
+      echo("require(fastDummies)\n");
+      if (do_janit) echo("require(janitor)\n");
+      echo("\n");
 
       
       // MAIN MODE
-      echo("require(fastDummies)\n");
       echo("local_obj <- " + data_obj + "\n");
       echo("is_survey <- 'variables' %in% names(local_obj)\n");
       echo("working_df <- if(is_survey) local_obj$variables else local_obj\n");
+      echo("source_vars <- working_df\n");
+      echo("old_cols <- names(working_df)\n\n");
 
-      echo("working_df <- fastDummies::dummy_cols(.data = working_df, select_columns = " + cols_r_code + ", remove_first_dummy = " + rem_first + ", remove_most_frequent_dummy = " + rem_freq + ", ignore_na = " + ign_na + ", remove_selected_columns = " + rem_orig + ")\n");
+      echo("working_df <- fastDummies::dummy_cols(.data = working_df, select_columns = " + cols_r_code + ", remove_first_dummy = " + rem_first + ", remove_most_frequent_dummy = " + rem_freq + ", ignore_na = " + ign_na + ", remove_selected_columns = " + rem_orig + ")\n\n");
+
+      echo("new_cols <- setdiff(names(working_df), old_cols)\n\n");
+
+      echo("# 1. Preserve original labels and assign factor values to new dummy labels\n");
+      echo("if (exists('rk.set.label')) {\n");
+      echo("  # Restore labels for original columns that might have lost metadata\n");
+      echo("  for(col_name in old_cols) {\n");
+      echo("    if(col_name %in% names(working_df)) {\n");
+      echo("      attr(working_df[[col_name]], '.rk.meta') <- attr(source_vars[[col_name]], '.rk.meta')\n");
+      echo("    }\n");
+      echo("  }\n");
+      echo("  # Set the uncleaned factor level as the label for new dummy columns\n");
+      echo("  for(nc in new_cols) {\n");
+      echo("    rk.set.label(working_df[[nc]], nc)\n");
+      echo("  }\n");
+      echo("}\n\n");
+
+      if (do_janit) {
+          echo("# 2. Clean column names (snake_case)\n");
+          echo("# The readable factor levels remain safely stored in the labels!\n");
+          echo("working_df <- janitor::clean_names(working_df)\n\n");
+      }
 
       echo("if (is_survey) {\n");
       echo("  dummy_results <- local_obj\n");
@@ -138,8 +131,6 @@ function calculate(is_preview){
       echo("} else {\n");
       echo("  dummy_results <- working_df\n");
       echo("}\n");
-
-      echo(genLabelRestoreCode("local_obj", "dummy_results"));
       
     
 }
@@ -154,9 +145,14 @@ function printout(is_preview){
 	}
     if(getValue("save_dummy_obj.active")) {
       var save_name = getValue("save_dummy_obj").replace(/"/g, "\\\"");
+
+      // SOLUCIÓN: Escapamos las comillas dobles que vienen del nombre del objeto
+      var inp_data_safe = getValue("inp_data").replace(/"/g, "\\\"");
+
       echo("rk.header(\"Dummy Variables Created: " + save_name + "\", level=3, parameters=list(\n");
-      echo("  \"Input Object\" = \"" + getValue("inp_data") + "\",\n");
+      echo("  \"Input Object\" = \"" + inp_data_safe + "\",\n");
       echo("  \"Remove first dummy\" = \"" + getValue("remove_first_dummy") + "\",\n");
+      echo("  \"Clean names with janitor\" = \"" + getValue("chk_janitor") + "\",\n");
       echo("  \"Remove original columns\" = \"" + getValue("remove_selected_columns") + "\"\n");
       echo("))\n");
     }
